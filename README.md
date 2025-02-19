@@ -1,4 +1,4 @@
-# CDI-Bench: Multi-faceted LLM Evaluation on Chinese Speech Emotional Understanding with Pyscho-linguistic Labels
+# CSEU-Bench: Multi-faceted LLM Evaluation on Chinese Speech Emotional Understanding with Pyscho-linguistic Labels
 
 **In compliance with data anonymization and GDPR policy, this repository only contains code for evaluating LLMs on a sample dataset for the moment. The full dataset will be released upon official acceptance of the paper**
 
