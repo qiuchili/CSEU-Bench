@@ -12,5 +12,5 @@
 **3. Place all audio files under /audios**
 
 **4. Run main_audio_csu.py for evaluating speech LLMs.**
-    - For SALMONN-13b: run `main_audio_csu_salmonn.py`
-    - For qwen2-audio-instruct: `run main_audio_csu_qwen2_instruct.py`
+- For SALMONN-13b: run `main_audio_csu_salmonn.py`
+- For qwen2-audio-instruct: `run main_audio_csu_qwen2_instruct.py`
