@@ -1,6 +1,6 @@
 # CSEU-Bench: Multi-faceted LLM Evaluation on Chinese Speech Emotional Understanding with Pyscho-linguistic Labels
 
-**In compliance with data anonymization and GDPR policy, this repository only contains code for evaluating LLMs on a sample dataset for the moment. The full dataset will be released upon official acceptance of the paper**
+**The full dataset has been uploaded to huggingface at https://huggingface.co/datasets/smart9/CSEU-Bench.**
 
 
 ## To run evaluation on CSEU-Bench:
