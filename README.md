@@ -97,8 +97,8 @@
 
 a) Zero-shot prompting:
 
-![title](summary_cseu\radar_map.png)
+![title](summary_cseu/radar_map.png)
 
 b) Few-shot prompting:
 
-![title](summary_cseu_fsl\radar_map.png)
+![title](summary_cseu_fsl/radar_map.png)
