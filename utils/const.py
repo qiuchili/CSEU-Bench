@@ -7,9 +7,21 @@ MOONSHOT_API_KEY='your_api_key'
 GEMINI_API_KEY='your_api_key'
 DASHSCOPE_API_KEY='your_api_key'
 
-ALL_TASKS_CSU = ['single-syllable','two-syllable','short-sentence','discourse']
-ALL_MODELS_CSU = ['salmonn-13b','qwen2-audio-instruct','qwen-audio-turbo', 'gemini-audio','gemini-pro-audio','gemini-2.0-flash-audio','gpt-4o-audio','human']
-ATTITUDE_LABELS_CSU = {
+ALL_DATASETS_CSEU = ['1-七种情感库1男1女','2-相同文本的几种情绪-字面有无情绪','2-相同文本的几种情绪-第一部分','2-相同文本的几种情绪-第二部分', '4-情绪态度库']
+ALL_TASKS_CSEU = ['single-syllable','two-syllable','short-sentence','discourse']
+ALL_MODELS_CSEU = ['random-prediction','salmonn-13b','kimi-audio-7b-instruct','qwen2-audio-instruct','qwen-audio-turbo', 'gemini-audio','gemini-pro-audio','gemini-2.0-flash-audio','gpt-4o-audio','human']
+MODEL_COLOR_DICT_CSEU = {'random-prediction':'black',
+                         'salmonn-13b':'lightcyan',
+                         'kimi-audio-7b-instruct':'lightcoral',
+                         'qwen2-audio-instruct':'moccasin',
+                         'qwen-audio-turbo':'lightseagreen', 
+                         'gemini-audio':'lightpink',
+                         'gemini-pro-audio':'lightblue',
+                         'gemini-2.0-flash-audio':'lightgreen',
+                         'gpt-4o-audio':'lightyellow',
+                         'human':'indigo'}
+
+ATTITUDE_LABELS_CSEU = {
         'gx':'高兴','ganx':'感谢/感激','ja':'骄傲/荣耀','jid':'激动',
         'kw':'渴望/盼望','my':'满意','mz':'满足','qq':'祈求',
         'qx':'庆幸','qxu':'谦虚/谦卑','rq':'热情/热心','xa':'喜爱',
@@ -31,23 +43,28 @@ ATTITUDE_LABELS_CSU = {
         'qd':'强调','gd':'感动','js':'谨慎',
         'hq':'好奇','tk':'调侃','lmo':'冷漠',
         'fy':'敷衍','hy':'怀疑/质疑', 'bnf':'不耐烦',
-        'jd':'鉴定','zx':'中性'}
-TASK_LABELS_CSU = {
+        'jdi':'坚定','juej':'倔强','zx':'中性'}
+
+TASK_LABELS_CSEU = {
     'single-syllable':{
         
-        'target_attitude': ATTITUDE_LABELS_CSU
+        'target_attitude': ATTITUDE_LABELS_CSEU
     },
 
     'two-syllable':{
-        'target_attitude': ATTITUDE_LABELS_CSU
+        'target_attitude': ATTITUDE_LABELS_CSEU
     },
 
     'short-sentence':{
 
-        'target_attitude': ATTITUDE_LABELS_CSU
+        'target_attitude': ATTITUDE_LABELS_CSEU
     },
 
     'discourse':{
-        'target_attitude': ATTITUDE_LABELS_CSU
-    }
+        'target_attitude': ATTITUDE_LABELS_CSEU
+    },
+    'all':{
+        'target_attitude': ATTITUDE_LABELS_CSEU
+    },
+    
 }

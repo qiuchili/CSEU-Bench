@@ -25,8 +25,8 @@ from transformers import (
     LlamaTokenizer
 )
 import librosa
-from beats.BEATs import BEATsConfig, BEATs
-from qformer.Qformer import BertConfig, BertLMHeadModel
+from .beats.BEATs import BEATsConfig, BEATs
+from .qformer.Qformer import BertConfig, BertLMHeadModel
 
 class SALMONN(nn.Module):
     def __init__(
@@ -80,7 +80,7 @@ class SALMONN(nn.Module):
         if not low_resource:
             self.llama_model = LlamaForCausalLM.from_pretrained(
                 vicuna_path,
-                torch_dtype=torch.float16,
+                # torch_dtype=torch.float16,
             )
         else:
             self.llama_model = LlamaForCausalLM.from_pretrained(

@@ -59,6 +59,7 @@ def build_entity_tree_from_human_perception(folder_path, output_path):
 
     ids = [np.where(polarity_list %2 == 0)[0], np.where(polarity_list == 1)[0], np.where(polarity_list == -1)[0]]
     sim_mat_average =np.array(sim_mats).mean(axis=0)
+    sim_mat_average[rows.index('感动'),columns.index('激动')]
 
     tree = Tree()
     tree.create_node('root', 'root')
@@ -82,6 +83,11 @@ def get_distance(leaf_label_1, leaf_label_2, tree, max_depth=5):
 
     node_1 = tree.get_node(leaf_label_1)
     node_2 = tree.get_node(leaf_label_2)
+
+    # if max(tree.depth(node_1), tree.depth(node_2))< max_depth:
+    #     normalizer = max(tree.depth(node_1), tree.depth(node_2))
+    # else:
+    #     normalizer = max_depth
 
     if (node_1 is None) or (node_2 is None):
         return 1
@@ -110,4 +116,60 @@ def get_distance(leaf_label_1, leaf_label_2, tree, max_depth=5):
         distance = distance + 1
         node_1 = tree.parent(node_1.identifier)
         node_2 = tree.parent(node_2.identifier)
-    return distance/(max_depth + 1)
+
+    if node_1.tag == 'root':
+        distance = distance - 1
+
+    
+    return distance/max_depth
+
+def plot_clustering_tree(input_pickle_path, output_image_path):
+    import sys
+    import pathlib
+    from matplotlib import font_manager
+
+
+    if sys.platform == 'win32':
+        path = pathlib.Path(r'C:\Program Files\Graphviz\bin')
+        if path.is_dir() and str(path) not in os.environ['PATH']:
+            os.environ['PATH'] += f';{path}'
+    font_path = 'SimHei.ttf'
+    font_manager.fontManager.addfont(font_path)
+    cn_font = font_manager.FontProperties(fname='SimHei.ttf')
+    plt.rcParams['font.sans-serif']= cn_font.get_name()
+    plt.rcParams['axes.unicode_minus'] = False 
+
+    tree = pickle.load(open(input_pickle_path, 'rb'))
+
+    import networkx as nx
+    G = nx.DiGraph()
+    for node in tree.all_nodes():
+        if node.identifier == 'Main Class 0':
+            G.add_node(node.identifier, label='Neutral')
+        elif node.identifier == 'Main Class 1':
+            G.add_node(node.identifier, label='Positive')
+        elif node.identifier == 'Main Class 2':
+            G.add_node(node.identifier, label='Negative')
+        elif tree.parent(node.identifier) and (tree.parent(node.identifier).identifier in ['Main Class 0','Main Class 1','Main Class 2']):
+            continue
+        else:
+            G.add_node(node.identifier, label=node.tag)
+        if node.tag == 'root':
+            pass
+        elif tree.parent(node.identifier):
+            _node = tree.parent((tree.parent(node.identifier).identifier))
+            if _node and _node.identifier in ['Main Class 0','Main Class 1','Main Class 2']:
+                G.add_edge(_node.identifier, node.identifier)
+            elif tree.parent(node.identifier).identifier in ['Main Class 0','Main Class 1','Main Class 2']:
+                continue
+            else:
+                G.add_edge(tree.parent(node.identifier).identifier, node.identifier)
+
+    pos = nx.nx_agraph.graphviz_layout(G, prog="dot")
+
+    # Draw the graph
+    plt.figure(figsize=(25, 20))
+    nx.draw(G, pos, with_labels=True, labels=nx.get_node_attributes(G, "label"), 
+            node_size=1000, node_color="lightblue", font_size=12, edge_color="gray")
+    plt.title("Tree Visualization using Matplotlib & NetworkX")
+    plt.savefig(output_image_path, dpi=800)
