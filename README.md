@@ -4,6 +4,8 @@
 
 ## To run evaluation on CSEU-Bench:
 
+**0. Install required packages via `pip install -r requirements.txt`**
+
 **1. Set api keys in const.py**
 
 **2. Download the CSEU-Bench from huggingface, and place it under /data**
