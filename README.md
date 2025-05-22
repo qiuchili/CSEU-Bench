@@ -86,16 +86,15 @@
 
 ---
 
-**4. Aggregating evaluation result.**
+**4. Aggregate evaluation result.**
 
 - Call `python aggregate_results_cseu.py`
 - The summary of results can be found at `/summary_cseu` and `/summary_cseu_fsl`, respectively 
 - Different depth values correspond to different hyperparameters `k` for the $Acc_k$ metric. The main result is produced with $Acc_5$ metric
 - Breakdown tables present the result of breakdown analysis on CSEU-discourse
 
----
 
-**4. Main experiment result:**
+**5. Main experiment result:**
 
 a) Zero-shot prompting:
 
