@@ -27,9 +27,9 @@
         - `MODEL_NAME = salmonn-13b`
         - Runs locally. Check https://github.com/bytedance/SALMONN for downloading pretrained checkpoints. Set their paths correctly at `--salmonn_***` options.  
     - **kimi-audio-7b-instruct**
-        - `MODEL_NAME = kimi-audio-7b-instruct`
+        - `MODEL_NAME = kimi-audio-instruct`
         - Runs locally. Check https://github.com/MoonshotAI/Kimi-Audio for downloading pretrained checkpoint. Set its path correctly at `--kimi_audio_instruct_model_dir` option.   
-    - **qwen2-audio-instruct**
+    - **qwen2-audio-7b-instruct**
         - `MODEL_NAME = qwen2-audio-instruct`
         - Runs locally. Check https://huggingface.co/Qwen/Qwen2-Audio-7B-Instruct for downloading pretrained checkpoint. Set its path correctly at `--qwen2_audio_instruct_model_dir` option.
     - **qwen-audio-turbo**
